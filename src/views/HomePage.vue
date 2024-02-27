@@ -1,34 +1,44 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <div id="padre">
+        <div id="redondeo">
+        </div>
+        <div id="card">
+          <ion-card id="login">
+            <div class="inputs">
+              <InputComponent :label="`USUARIO`" :placeholder="`USUARIO`" :iconL="`USUARIO`" />
+              <InputComponent :label="`USUARIO`" :placeholder="`USUARIO`" :tipo="`password`" :iconL="`USUARIO`" />
+            </div>
+            <div class="button">
+              <ButtonComponent :title="`INGRESAR`" />
+            </div>
+            <div class="button">
+              <ion-button fill="clear">
+                ¡REGISTRATE!
+              </ion-button>
+            </div>
+            <ion-button>
+                ¡REGISTRATE!
+              </ion-button>
+          </ion-card>
+        </div>
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
+import InputComponent from './../components/InputComponent.vue';
+import ButtonComponent from './../components/ButtonComponent.vue';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+
 </script>
 
 <style scoped>
 #container {
   text-align: center;
-  
+
   position: absolute;
   left: 0;
   right: 0;
@@ -44,13 +54,50 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue
 #container p {
   font-size: 16px;
   line-height: 22px;
-  
+
   color: #8c8c8c;
-  
+
   margin: 0;
+}
+
+#padre {
+  position: relative;
+  height: 100%;
+}
+
+#redondeo {
+  position: relative;
+  z-index: 50;
+  height: 80%;
+  border-radius: 0% 0% 50% 50%;
+  background: linear-gradient(#7FE5F0, #7FE5F0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#card {
+  position: absolute;
+  z-index: 100;
+  top: 25%;
+  left: 4%;
+  width: 100%;
+  height: 100%;
+}
+
+ion-card {
+  --background: #fff;
+  width: 85%;
+  height: 60%;
+  padding: 30% 2%;
 }
 
 #container a {
   text-decoration: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
 }
 </style>
